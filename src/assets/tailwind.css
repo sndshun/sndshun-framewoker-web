@@ -1,0 +1,10 @@
+/* tailwind 引入 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .myCss{
+        @apply p-0 py-0 bg-repeat-x
+    }
+}
