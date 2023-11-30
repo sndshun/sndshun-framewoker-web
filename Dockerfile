@@ -1,7 +1,3 @@
-# Docker image for vue application
-# VERSION 1.0.0
-# Author: swcode
-
 # 使用 Nginx 镜像作为基础镜像
 FROM nginx:latest
 
