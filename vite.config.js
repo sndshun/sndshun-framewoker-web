@@ -10,6 +10,7 @@ export default defineConfig(({mode}) => {
     return {
         base: env.VITE_BASE_PATH,
         server: {
+            port: 3000,
             proxy: {
                 '/api': {
                     target: 'http://localhost:8080',
