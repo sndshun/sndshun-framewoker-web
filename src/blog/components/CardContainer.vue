@@ -29,7 +29,7 @@ const {
     <div class="grid gap-5 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
 
       <div v-for="item in data" class="overflow-hidden transition-shadow duration-300 bg-white rounded">
-        <a href="/" aria-label="Article">
+        <a href="/public" aria-label="Article">
           <img
               :src="cover?item[cover]:item.cover"
               class="object-cover w-full h-64 rounded" alt=""/>
@@ -38,7 +38,7 @@ const {
           <p class="mb-2 text-xs font-semibold text-gray-600 uppercase">
             {{ date?item[date]:item.date }}
           </p>
-          <a href="/" aria-label="Article"
+          <a href="/public" aria-label="Article"
              class="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700">
             <p class="text-2xl font-bold leading-5">
               {{ title?item[title]:item.title }}
@@ -48,7 +48,7 @@ const {
             {{ text?item[text]:item.text }}
           </p>
           <div class="flex space-x-4">
-            <a href="/" aria-label="Likes"
+            <a href="/public" aria-label="Likes"
                class="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group">
               <div class="mr-2">
                 <svg
@@ -71,7 +71,7 @@ const {
                 {{ likes?item[likes]:item.likes }}
               </p>
             </a>
-            <a href="/" aria-label="Comments"
+            <a href="/public" aria-label="Comments"
                class="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group">
               <div class="mr-2">
                 <svg

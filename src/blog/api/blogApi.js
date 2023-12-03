@@ -4,6 +4,20 @@ export function getBlogMenu() {
     return request("/blog/endpoint/menu/tree")
 }
 
+/**
+ * 获取所有导航栏
+ * @returns {*}
+ */
+export function getBlogNav() {
+    return request("/blog/endpoint/menu/nav")
+}
+
+/**
+ * 分页查询文章
+ * @param current
+ * @param size
+ * @returns {*}
+ */
 export function getPostPage({current = 1, size = 10} = {}) {
     return request({
         method: "get",
@@ -13,4 +27,28 @@ export function getPostPage({current = 1, size = 10} = {}) {
             size
         }
     })
+}
+
+/**
+ * 获取所有分类 带分层
+ * @returns {*}
+ */
+export function getCategoryTree() {
+    return request("/blog/endpoint/category/tree")
+}
+
+/**
+ * 获取所有标签
+ * @returns {*}
+ */
+export function getTagGroupCategory() {
+    return request("/blog/endpoint/tag/group")
+}
+
+/**
+ * 获取所有友链
+ * @returns {*}
+ */
+export function getLinksAll() {
+    return request("/blog/endpoint/friendLink/all")
 }
