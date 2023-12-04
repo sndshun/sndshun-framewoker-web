@@ -13,7 +13,7 @@ export default defineConfig(({mode}) => {
             port: 3000,
             proxy: {
                 '/api': {
-                    target: 'http://localhost:8080',
+                    target: env.VITE_PROXY_PATH,
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/api/, ''),
                 }
