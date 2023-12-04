@@ -11,7 +11,7 @@ getTagGroupCategory().then(res=>{
 
 <template>
   <div class="m-6 p-4 border rounded-md">
-    <h3 class="text-2xl font-bold my-3">毕生所学</h3>
+    <h3 class="text-2xl font-bold my-3">标签云</h3>
     <div class="flex flex-wrap gap-3 justify-center">
       <template v-for="(value,key) in data">
         <div class="flex items-center w-full">
