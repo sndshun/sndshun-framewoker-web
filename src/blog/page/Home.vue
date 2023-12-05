@@ -31,8 +31,8 @@ function postInit() {
 <template>
   <div>
     <card-container
-        :data="post.list" :date="'publishedTime'"
-        :text="'summary'" :cover="'coverImageUrl'"/>
+        :data="post.list" date="publishedTime"
+        text="summary" cover="coverImageUrl"/>
 
     <fwb-pagination
         class="flex justify-center"
