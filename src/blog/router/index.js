@@ -45,6 +45,12 @@ export const blogRouter=[
                 meta: {
                     title: '关于'
                 }
+            },{
+                path: baseUrl.concat('/post'),  //暂时首页
+                component: ()=>import("@/blog/page/Post.vue"),
+                meta: {
+                    title: '文章'
+                }
             },
         ]
     },

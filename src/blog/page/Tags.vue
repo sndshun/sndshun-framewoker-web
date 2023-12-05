@@ -1,5 +1,4 @@
 <script setup>
-
 import {getTagGroupCategory} from "@/blog/api/blogApi.js";
 import {ref} from "vue";
 
@@ -7,6 +6,7 @@ const data=ref({})
 getTagGroupCategory().then(res=>{
   data.value=res
 })
+
 </script>
 
 <template>

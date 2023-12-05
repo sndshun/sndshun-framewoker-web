@@ -1,7 +1,7 @@
 <script setup>
-
 import {getCategoryTree} from "@/blog/api/blogApi.js";
 import {ref} from "vue";
+import CategoryChildren from "@/blog/components/CategoryChildren.vue";
 
 const data=ref([])
 getCategoryTree().then(res => {
@@ -12,16 +12,11 @@ getCategoryTree().then(res => {
 
 <template>
   <div class="m-6 p-4 border rounded-md">
-    <h3 class="text-2xl font-bold my-3">还是分分类把</h3>
-    <div class="flex flex-wrap gap-3 justify-center">
-      <ol>
-        <li v-for="item in data">
-          {{item.name}}---------------------------------------{{item.postCount}}
-          <ul v-if="item.children.length!==0">
-            <li v-for="item2 in item.children">&nbsp;&nbsp;&nbsp;&nbsp; {{item2.name}}--------------------{{item2.postCount}}</li>
-          </ul>
-        </li>
-      </ol>
+    <h3 class="text-2xl font-bold my-3">分类</h3>
+    <div class="container">
+      <div class="bg-white p-6 rounded-lg">
+        <category-children :children="data"/>
+      </div>
     </div>
   </div>
 </template>

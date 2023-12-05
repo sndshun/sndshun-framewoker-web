@@ -52,3 +52,11 @@ export function getTagGroupCategory() {
 export function getLinksAll() {
     return request("/blog/endpoint/friendLink/all")
 }
+
+/**
+ * 获取文章归档
+ * @returns {*}
+ */
+export function getPostArchive() {
+    return request("/blog/endpoint/post/archive")
+}

@@ -6,7 +6,6 @@ import {FwbCard} from "flowbite-vue";
 const data=ref([])
 getLinksAll().then(res=>{
   data.value=res
-  console.log(res)
 })
 </script>
 
