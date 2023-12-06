@@ -1,4 +1,6 @@
 <script setup>
+import {localForage} from "@/util/localforage.js";
+localForage().setItem('key','value',10)
 </script>
 <template>
   <section class="bg-white dark:bg-gray-900">

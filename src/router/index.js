@@ -19,9 +19,7 @@ const baseRoutes = [
 ]
 
 const routes=[
-    //...baseRoutes,
-    ...blogRouter,
-    ...blogAdminRouter,
+    ...baseRoutes,
 ]
 
 // 3. 创建路由实例并传递 `routes` 配置
