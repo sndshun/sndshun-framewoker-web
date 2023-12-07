@@ -56,7 +56,7 @@ export const blogRouter=[
     },
 ]
 
-import adminLayout from '@/blog/admin/layout/index.vue'
+import adminLayout from '@/blog/admin/layout/Index.vue'
 const adminBaseUrl=''
 export const blogAdminRouter=[
     {
@@ -65,13 +65,13 @@ export const blogAdminRouter=[
         meta: {
             title: '首页'
         },
-        redirect: '/blog/admin/index',
+        redirect: '/blog/admin/dashboard',
         children:[
             {
-                path: adminBaseUrl.concat('index'),
-                component: ()=>import('@/blog/admin/Test.vue'),
+                path: adminBaseUrl.concat('dashboard'),
+                component: ()=>import('@/blog/admin/page/Dashboard.vue'),
                 meta: {
-                    title: '首页'
+                    title: '仪表板'
                 },
             }
         ]
