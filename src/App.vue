@@ -1,10 +1,4 @@
 <script setup>
-import {computed, ref} from "vue";
-import {appStore} from "./store/index.js";
-import {storeToRefs} from "pinia";
-
-const {count}= storeToRefs(appStore())
-const {countAdd}=appStore()
 
 </script>
 
@@ -12,6 +6,8 @@ const {countAdd}=appStore()
   <router-view/>
 </template>
 
-<style scoped>
-
+<style>
+html,body,#app,#app>div{
+  height: 100%;
+}
 </style>
