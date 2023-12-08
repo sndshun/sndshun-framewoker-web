@@ -49,6 +49,7 @@ jobs:
       # 上传打包资源
       - name: 上传打包资源
         run: |
+          sshpass -p ${{ secrets.DEPLOY_PASSWORD }} ssh root@124.70.45.144 "rm -rf /framework/web/html/*"
           sshpass -p ${{ secrets.DEPLOY_PASSWORD }} scp -o StrictHostKeyChecking=no -r ./dist/* root@124.70.45.144:/framework/web/html
         env:
           REMOTE_PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
