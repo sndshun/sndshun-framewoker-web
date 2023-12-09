@@ -14,8 +14,8 @@ const baseRoutes = [
         children: [
             ...blogRouter,
             ...blogAdminRouter
-        ]
-    },
+        ],
+    }
 ]
 
 const routes=[

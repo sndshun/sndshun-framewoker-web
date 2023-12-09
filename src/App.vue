@@ -8,6 +8,6 @@
 
 <style>
 html,body,#app,#app>div{
-  height: 100%;
+  min-height: 100vh;
 }
 </style>

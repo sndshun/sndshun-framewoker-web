@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <h1 class="text-3xl">Welcome to my dashboard!</h1>
+  <h1>文章发布</h1>
 </template>
 
 <style scoped>

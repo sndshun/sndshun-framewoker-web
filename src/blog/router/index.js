@@ -73,7 +73,13 @@ export const blogAdminRouter=[
                 meta: {
                     title: '仪表板'
                 },
-            }
+            },{
+                path: adminBaseUrl.concat('post/release'),
+                component: ()=>import('@/blog/admin/page/PostRelease.vue'),
+                meta: {
+                    title: '文章发布'
+                },
+            },
         ]
     }
 ]

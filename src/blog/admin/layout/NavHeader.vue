@@ -4,15 +4,26 @@
 
 <template>
   <!-- 导航栏 -->
-  <nav class="bg-white p-4 shadow-md">
-    <div class="container mx-auto">
-      <div class="flex items-center justify-between">
-        <button @click="toggleSidebar" class="lg:hidden">Toggle Sidebar</button>
-        <div class="text-xl font-semibold">后台管理</div>
-        <div class="flex items-center space-x-4">
-          <!-- 导航栏链接或用户信息等 -->
+  <nav class="w-full z-30 flex bg-white p-2 items-center justify-center h-16 px-10">
+    <div class="logo ml-12 dark:text-white  transform ease-in-out duration-500 flex-none h-full flex items-center justify-center">
+      NERVE
+    </div>
+    <!-- SPACER -->
+    <div class="grow h-full flex items-center justify-center"></div>
+    <div class="flex-none h-full text-center flex items-center justify-center">
+
+      <div class="flex space-x-3 items-center px-3">
+        <div class="flex-none flex justify-center">
+          <div class="w-8 h-8 flex ">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShta_GXR2xdnsxSzj_GTcJHcNykjVKrCBrZ9qouUl0usuJWG2Rpr_PbTDu3sA9auNUH64&usqp=CAU"
+                alt="profile" class="shadow rounded-full object-cover"/>
+          </div>
         </div>
+
+        <div class="hidden md:block text-sm md:text-md text-black dark:text-white">John Doe</div>
       </div>
+
     </div>
   </nav>
 </template>
