@@ -7,14 +7,24 @@
  * @Last update time : 2021/11/1
  */
 import axios from "axios";
+import JsonBigint from 'json-bigint'
 
 /*
   @ 创建自定义axios实例
 */
 const request = axios.create({
     baseURL: "/api",
-    timeout: 1000*3,
+    timeout: 1000 * 3,
     withCredentials: false, // 跨域请求是否需要携带 cookie
+    transformResponse: [function (data) {
+        try {
+            // 如果转换成功则返回转换的数据结果  解决Long精度丢失
+            return JsonBigint.parse(data)
+        } catch (err) {
+            // 如果转换失败，则包装为统一数据格式并返回
+            return data
+        }
+    }],
 })
 /*
   @ request 请求拦截器=>请求发出前处理
@@ -35,11 +45,10 @@ request.interceptors.request.use(
 */
 request.interceptors.response.use(
     response => {
-
         //获取统一响应返回体
-        const res=response.data
+        const res = response.data
         //在这里处理响应体中的状态码
-        const code=res.code
+        const code = res.code
         if (code === 200) {
             console.log(res.message);
         } else {

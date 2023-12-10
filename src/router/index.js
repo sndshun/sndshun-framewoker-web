@@ -2,6 +2,7 @@ import {createRouter,createWebHashHistory} from "vue-router";
 import {blogRouter,blogAdminRouter} from "@/blog/router/index.js";
 
 import Index from "@/view/index.vue";
+import Error from "@/view/404.vue"
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -15,7 +16,9 @@ const baseRoutes = [
             ...blogRouter,
             ...blogAdminRouter
         ],
-    }
+    },
+
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: Error },
 ]
 
 const routes=[

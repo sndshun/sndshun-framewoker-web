@@ -30,6 +30,15 @@ export function getPostPage({current = 1, size = 10} = {}) {
 }
 
 /**
+ * 根据id查询文章详情
+ * @param id
+ * @returns {*}
+ */
+export function getPostById(id) {
+    return request(`/blog/endpoint/post/${id}`)
+}
+
+/**
  * 获取所有分类 带分层
  * @returns {*}
  */

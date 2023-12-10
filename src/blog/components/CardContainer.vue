@@ -29,7 +29,7 @@ const {
   <div class="grid gap-5 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
 
     <div v-for="item in data" class="overflow-hidden transition-shadow duration-300 bg-white rounded"
-         @click.prevent="router.push('/blog/post')">
+         @click.prevent="router.push('/blog/post/'+item.id)">
       <a href="/public" aria-label="Article">
         <img
             :src="cover?item[cover]:item.cover"
