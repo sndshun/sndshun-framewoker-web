@@ -4,8 +4,9 @@
 
 <template>
   <!-- 导航栏 -->
-  <nav class="w-full z-30 flex bg-white p-2 items-center justify-center h-16 px-10">
-    <div class="logo ml-12 dark:text-white  transform ease-in-out duration-500 flex-none h-full flex items-center justify-center">
+  <div class="flex bg-white items-center justify-center w-full z-30 p-2  h-16 px-10">
+    <div
+        class="logo ml-12 dark:text-white  transform ease-in-out duration-500 flex-none h-full flex items-center justify-center">
       NERVE
     </div>
     <!-- SPACER -->
@@ -25,7 +26,7 @@
       </div>
 
     </div>
-  </nav>
+  </div>
 </template>
 
 <style scoped>

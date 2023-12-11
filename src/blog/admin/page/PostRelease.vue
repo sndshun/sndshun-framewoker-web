@@ -3,7 +3,7 @@ import {ref, onMounted} from 'vue';
 import Vditor from 'vditor';
 import 'vditor/dist/index.css';
 import {savePost} from "@/blog/api/blogAdminPost.js";
-import {ElNotification} from "element-plus";
+import {ElMessage, ElNotification} from "element-plus";
 
 
 const post = ref({
@@ -56,7 +56,6 @@ function save() {
   post.value.isPublished = 1
   post.value.content = vditor.value.getHTML()
   savePost(post.value).then(res => {
-
     ElNotification({
       title: '保存成功',
       message: '发布更改',

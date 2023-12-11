@@ -5,6 +5,6 @@
 
 @layer components{
     .myCss{
-        @apply p-0 py-0 bg-repeat-x
+        @apply mr-5 text-sm text-slate-400
     }
 }

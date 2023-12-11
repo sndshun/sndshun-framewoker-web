@@ -57,6 +57,7 @@ export const blogRouter=[
 ]
 
 import adminLayout from '@/blog/admin/layout/Index.vue'
+import Error from '@/blog/admin/page/404.vue'
 const adminBaseUrl=''
 export const blogAdminRouter=[
     {
@@ -79,12 +80,24 @@ export const blogAdminRouter=[
                 meta: {
                     title: '文章发布'
                 },
+            },{
+                path: adminBaseUrl.concat('post/list'),
+                component: ()=>import('@/blog/admin/page/PostList.vue'),
+                meta: {
+                    title: '文章管理'
+                },
+            },{
+                path: adminBaseUrl.concat('post/categories'),
+                component: ()=>import('@/blog/admin/page/PostCategories.vue'),
+                meta: {
+                    title: '分类管理'
+                },
             },
             {
                 path: adminBaseUrl.concat('log-submenu'),
                 component: ()=>import('@/blog/admin/page/VisitorLog.vue'),
                 meta: {
-                    title: '文章发布'
+                    title: '操作日志'
                 },
             },
 

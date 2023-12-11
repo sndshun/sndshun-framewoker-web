@@ -19,7 +19,6 @@ function visitLog() {
     visit.size = res.size;
     visit.pages = res.pages;
     visit.total = res.total;
-    console.log(res);
   });
 }
 </script>

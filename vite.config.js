@@ -4,6 +4,7 @@ import {resolve} from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from "unplugin-vue-components/resolvers";
+import ElementPlus from 'unplugin-element-plus/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => {
@@ -28,6 +29,9 @@ export default defineConfig(({mode}) => {
             }),
             Components({
                 resolvers: [ElementPlusResolver()],
+            }),
+            ElementPlus({ //样式自动导入
+                // options
             }),
         ],
         resolve: {

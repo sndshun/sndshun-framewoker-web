@@ -7,3 +7,11 @@ export function savePost(data) {
         data:data
     })
 }
+
+export function getPostAdminPage(options={current : 1, size : 10,},data) {
+    return request({
+        method: "get",
+        url: "/blog/admin/post",
+        params: {...options,...data}
+    })
+}
