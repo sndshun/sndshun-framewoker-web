@@ -37,13 +37,6 @@ function visitLog() {
     <el-table-column prop="times" label="请求耗时（毫秒）" width="150" />
     <el-table-column prop="createTime" label="访问时间" width="160" />
   </el-table>
-  <el-skeleton />
-  <br />
-  <el-skeleton style="--el-skeleton-circle-size: 100px">
-    <template #template>
-      <el-skeleton-item variant="circle" />
-    </template>
-  </el-skeleton>
 </template>
 
 <style scoped>
