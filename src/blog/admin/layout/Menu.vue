@@ -11,7 +11,7 @@ getAdminBlogMenu().then(res=>{
 
 <template>
   <!-- 侧边栏内容，可以包含菜单、链接等 -->
-  <aside class="w-60 max-w-[280px] bg-white">
+  <aside class="w-60 max-w-[280px] bg-white flex-shrink-0">
     <nav class="h-16 w-full bg-white">
 
     </nav>
