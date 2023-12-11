@@ -1,15 +1,14 @@
 <script setup>
 import {getPostPage} from "@/blog/api/blogApi.js";
-import {FwbPagination} from "flowbite-vue";
 import {reactive} from "vue";
 import CardContainer from "@/blog/components/CardContainer.vue";
 
 const post = reactive({
   list: [],
   current: 1,
-  size: 6,
+  size: 3,
   pages: null,
-  total: null,
+  total: 0,
 })
 
 postInit()
@@ -21,7 +20,12 @@ function postInit() {
     post.size = res.size
     post.pages = res.pages
     post.total = res.total
-  })
+  });
+}
+
+function postInitSize() {
+  post.current=1
+  postInit()
 }
 
 
@@ -35,12 +39,18 @@ function postInit() {
           :data="post.list" date="publishedTime"
           text="summary" cover="coverImageUrl"/>
 
-      <fwb-pagination
-          class="flex justify-center"
-          v-model="post.current"
-          :total-pages="post.pages"
-          @update:model-value="postInit"
-          :slice-length="4"></fwb-pagination>
+      <div class="flex justify-center">
+        <el-pagination
+            v-model:current-page="post.current"
+            v-model:page-size="post.size"
+            :page-sizes="[3,6, 12, 32, 100]"
+            small="small"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="post.total"
+            @size-change="postInitSize"
+            @current-change="postInit"
+        />
+      </div>
     </div>
 
     <div class="w-full md:w-1/4 px-4">

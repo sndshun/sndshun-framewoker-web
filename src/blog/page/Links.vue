@@ -1,7 +1,6 @@
 <script setup>
 import {getLinksAll} from "@/blog/api/blogApi.js";
 import {ref} from "vue";
-import {FwbCard} from "flowbite-vue";
 
 const data=ref([])
 getLinksAll().then(res=>{
