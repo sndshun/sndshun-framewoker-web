@@ -1,6 +1,4 @@
 import Layout from "@/blog/page/Layout.vue";
-import Error from  "@/blog/admin/page/404.vue"
-
 const baseUrl = ""
 export const blogRouter=[
     {
@@ -78,6 +76,13 @@ export const blogAdminRouter=[
             },{
                 path: adminBaseUrl.concat('post/release'),
                 component: ()=>import('@/blog/admin/page/PostRelease.vue'),
+                meta: {
+                    title: '文章发布'
+                },
+            },
+            {
+                path: adminBaseUrl.concat('log-submenu'),
+                component: ()=>import('@/blog/admin/page/VisitorLog.vue'),
                 meta: {
                     title: '文章发布'
                 },
