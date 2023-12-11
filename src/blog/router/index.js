@@ -80,6 +80,13 @@ export const blogAdminRouter=[
                     title: '文章发布'
                 },
             },
+            {
+                path: adminBaseUrl.concat('log-submenu'),
+                component: ()=>import('@/blog/admin/page/VisitorLog.vue'),
+                meta: {
+                    title: '文章发布'
+                },
+            },
         ]
     }
 ]
