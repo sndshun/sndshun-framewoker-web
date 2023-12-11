@@ -56,6 +56,7 @@ function save() {
   post.value.isPublished = 1
   post.value.content = vditor.value.getHTML()
   savePost(post.value).then(res => {
+
     ElNotification({
       title: '保存成功',
       message: '发布更改',
