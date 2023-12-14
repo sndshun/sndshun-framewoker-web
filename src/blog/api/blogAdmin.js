@@ -12,7 +12,7 @@ export function getAdminBlogMenu() {
  * 获取所有访客日志
  * @returns 
  */
-export function getVisitLog(options={current : 1, size : 10,},data) {
+export function getVisitLog(options={current : 1, size : 15,},data) {
     return request({
         method: "get",
         url: "/blog/admin/visit",
