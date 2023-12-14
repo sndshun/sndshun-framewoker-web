@@ -71,7 +71,6 @@ const query = reactive({
 })
 
 init()
-
 function init() {
   getPostAdminPage(page, query).then(res => {
     dataList.list = res.records
@@ -79,9 +78,6 @@ function init() {
     dataList.size = res.size
     dataList.pages = res.pages
     dataList.total = res.total
-
-    page.size = res.size
-    page.current = res.current
   })
 }
 

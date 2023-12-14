@@ -1,15 +1,42 @@
 <script setup>
-import {onActivated, onMounted, ref} from "vue";
+import {ref, onActivated} from "vue";
 import {useRoute} from "vue-router";
 import {getPostById} from "@/blog/api/blogApi.js";
+import VditorPreview from 'vditor/dist/method.min';
+import 'vditor/dist/index.css';
+const route = useRoute()
 
-const route=useRoute()
-const id=route.params.id
-
-const post=ref({})
-getPostById(id).then(res=>{
-  post.value=res
+const id = ref()
+const post = ref({})
+const container = ref(null)
+onActivated(() => {
+  id.value = route.params.id
+  init()
 })
+
+function init() {
+  getPostById(id.value).then(res => {
+    post.value = res
+    // 使用VditorPreview进行渲染
+    VditorPreview.preview(container.value, post.value.content, {
+      // 具体配置项可以根据需求添加
+      theme: {
+        current: 'ant-design'
+      },
+      hljs: {
+        style: 'native',
+        lineNumber: true
+      },
+      math: {
+        engine: 'MathJax', // 使用 MathJax 渲染数学公式
+        macros: {
+          '*': '\\times',
+        },
+      },
+    });
+  })
+}
+
 
 </script>
 
@@ -17,17 +44,14 @@ getPostById(id).then(res=>{
   <div class="flex flex-col">
     <div class="bg-gray-100 py-8">
       <div class="container mx-auto px-4">
-        <h1 class="text-4xl font-bold text-gray-800 mb-2">Blog Title Here</h1>
-        <p class="text-gray-600">Published on April 4, 2023</p>
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">{{ post.title }}</h1>
+        <p class="text-gray-600">{{ post.publishedTime }}</p>
       </div>
     </div>
     <div class="bg-white py-8">
       <div class="container mx-auto px-4 flex flex-col md:flex-row">
         <div class="w-full md:w-3/4 px-4">
-          <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063" alt="Blog Featured Image" class="mb-8">
-          <div class="prose max-w-none" v-html="post.content">
-
-
+          <div class="max-w-none" ref="container">
           </div>
         </div>
         <div class="w-full md:w-1/4 px-4">
