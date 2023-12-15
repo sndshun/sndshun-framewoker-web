@@ -39,7 +39,7 @@ function visitLog() {
       :data="visit.list"
       row-key="id"
       :tree-props="{ children: 'children' }"
-      max-height="500"
+      max-height="600"
     >
       <el-table-column fixed prop="uuid" label="访客标识码" width="150" align="center"/>
       <el-table-column prop="uri" label="请求接口" width="210" align="center"/>

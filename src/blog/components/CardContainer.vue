@@ -39,9 +39,9 @@ const { data, title, cover, text, date, likes, comments } = toRefs(props);
         />
       </a>
       <div class="py-2">
-        <!-- <p class="mb-2 text-xs font-semibold text-gray-600 uppercase">
+        <p class="mb-2 text-xs font-semibold text-gray-600 uppercase">
           {{ date ? item[date] : item.date }}
-        </p> -->
+        </p>
         <a
           href="/public"
           aria-label="Article"
@@ -130,16 +130,22 @@ const { data, title, cover, text, date, likes, comments } = toRefs(props);
 </template>
 
 <style scoped>
-.title{
+.title {
   font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    color: var(--juejin-font-1);
-    width: 100%;
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--juejin-font-1);
+  width: 100%;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.duration-300 {
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  /* border: 1px solid #79bbff !important; */
+  margin-bottom: 1.5rem;
 }
 </style>

@@ -11,7 +11,7 @@ const {data,name,path}=toRefs(props)
 
 <template>
   <nav class="relative bg-white shadow dark:bg-gray-800">
-    <div class="container px-6 py-3 mx-auto md:flex">
+    <div class="container py-3 mx-auto md:flex">
       <div class="flex items-center justify-between">
         <a href="#">
           <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="">
