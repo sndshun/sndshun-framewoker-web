@@ -10,7 +10,7 @@ const post = reactive({
 });
 window.addEventListener("resize", (e) => {
   // console.log(e.screen.width, e.screen.height)
-  console.log(e);
+  //console.log(e);
 });
 </script>
 

@@ -19,6 +19,11 @@ export default defineConfig(({mode}) => {
                     target: env.VITE_PROXY_PATH,
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/api/, ''),
+                },
+                '/minio': {
+                    target: env.VITE_MINIO_PATH,
+                    changeOrigin: true,
+                    rewrite: (path) => path.replace(/^\/minio/, ''),
                 }
             }
         },

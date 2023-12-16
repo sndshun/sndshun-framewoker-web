@@ -46,9 +46,29 @@ onMounted(() => {
     after() {
       vditor.value.setValue('开始你的发挥');
     },
+    cache: {
+      enable: false, //关闭浏览器缓存
+    },
     counter: {
       enable: true //开启字数统计
-    }
+    },
+    upload: {
+      max: 2 * 1024 * 1024, //文件最大byte
+      accept: 'image/*,.mp3, .wav, .rar', //文件上传类型
+      url: '/api/file/upload', //文件上传路径
+      //linkToImgUrl: '/api/file/path', //粘贴图片上传路径 todo 尼玛搞不来
+      linkToImgFormat(string){
+        vditor.value.insertValue(`![${JSON.parse(string).data.originalFileName}](${JSON.parse(string).data.ossFilePath})`)
+      },
+      multiple: false, //是否上传多个文件
+      fieldName: 'file', //上传字段名称
+      filename(name) {  //文件名安全处理
+        return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').replace('/\\s/g', '')
+      },
+      success(_, msg) {
+        vditor.value.insertValue(`![${JSON.parse(msg).data.originalFileName}](${JSON.parse(msg).data.ossFilePath})`)
+      }
+    },
   })
 })
 
