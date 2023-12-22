@@ -1,7 +1,9 @@
 <script setup>
-
 import {reactive, ref} from "vue";
 import {getPostAdminPage} from "@/blog/api/blogAdminPost.js";
+import {getAdminCategoriesMap} from "@/blog/api/blogAdminCategories.js";
+import {getDictMapByCode} from "@/blog/api/blogDict.js";
+import {getAdminTagsMap} from "@/blog/api/blogAdminTag.js";
 
 const shortcuts = [
   {
@@ -49,6 +51,19 @@ const shortcuts = [
   },
 ]
 
+
+const cateMap=ref(null)
+const dictBlogPostType=ref(null)
+const tagMap=ref(null)
+postLoad()
+async function postLoad() {
+  cateMap.value=await getAdminCategoriesMap()
+  dictBlogPostType.value=await getDictMapByCode('blog_post_type')
+  tagMap.value=await getAdminTagsMap()
+  init()
+}
+
+
 const dataList = reactive({
   list: [],
   current: 1,
@@ -70,7 +85,6 @@ const query = reactive({
   publishedTime: null,
 })
 
-init()
 function init() {
   getPostAdminPage(page, query).then(res => {
     dataList.list = res.records
@@ -130,41 +144,35 @@ const is=ref(1)
     </div>
     <el-form :inline="true" :model="query" label-width="0">
       <el-form-item>
-        <!--        todo 字典查询-->
         <el-select
             v-model="query.type"
             placeholder="请选择文章类型"
             clearable
         >
-          <el-option label="原创" value="1"/>
-          <el-option label="转载" value="2"/>
-          <el-option label="翻译" value="2"/>
+          <el-option v-for="(v,k) in dictBlogPostType" :label="v" :value="k"/>
         </el-select>
       </el-form-item>
       <el-form-item>
-        <!--       todo 查分类 -->
         <el-select
+            filterable
             v-model="query.categoryId"
             placeholder="请选择分类"
             clearable
         >
-          <el-option label="Zone one" value="shanghai"/>
-          <el-option label="Zone two" value="beijing"/>
+          <el-option v-for="(v,k) in cateMap" :label="v" :value="k"/>
         </el-select>
       </el-form-item>
       <el-form-item>
         <!--       todo 这个不好弄啊 -->
         <el-select
+            filterable
             v-model="query.tags"
             placeholder="请选择标签"
             multiple
             clearable
             style="width: 240px"
         >
-          <el-option label="one" value="1"/>
-          <el-option label="two" value="2"/>
-          <el-option label="two" value="3"/>
-          <el-option label="two" value="4"/>
+          <el-option v-for="(v,k) in tagMap" :label="v" :value="k"/>
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -196,14 +204,22 @@ const is=ref(1)
       <el-table-column type="selection" width="42"/>
       <el-table-column prop="title" label="标题" width="200" fixed show-overflow-tooltip/>
       <el-table-column prop="coverImageUrl" label="封面" show-overflow-tooltip/>
-      <el-table-column prop="id" label="分类"/>
+      <el-table-column label="分类" show-overflow-tooltip>
+        <template #default="scope">
+          {{cateMap[scope.row.categoryId]}}
+        </template>
+      </el-table-column>
       <el-table-column label="标签">
         <template #default="scope">
           <el-tag>123</el-tag>
         </template>
       </el-table-column>
       <el-table-column prop="id" label="浏览量"/>
-      <el-table-column prop="id" label="类型"/>
+      <el-table-column label="类型">
+        <template #default="scope">
+          {{dictBlogPostType[scope.row.type]}}
+        </template>
+      </el-table-column>
       <el-table-column prop="publishedTime" label="发布时间" width="170" show-overflow-tooltip/>
       <el-table-column label="发布">
         <template #default="scope">
@@ -276,6 +292,7 @@ const is=ref(1)
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(0 0 0);
+  cursor: pointer;
 }
 .status {
   margin-right: 1.25rem;
@@ -283,5 +300,6 @@ const is=ref(1)
   line-height: 1.25rem;
   --tw-text-opacity: 1;
   color: rgb(148 163 184);
+  cursor: pointer;
 }
 </style>
