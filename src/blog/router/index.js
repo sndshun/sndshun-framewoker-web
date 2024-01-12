@@ -78,7 +78,8 @@ export const blogAdminRouter=[
                 path: adminBaseUrl.concat('post/release'),
                 component: ()=>import('@/blog/admin/page/PostRelease.vue'),
                 meta: {
-                    title: '文章发布'
+                    title: '文章发布',
+                    keepAlive: false
                 },
             },{
                 path: adminBaseUrl.concat('post/list'),

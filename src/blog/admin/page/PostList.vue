@@ -4,6 +4,9 @@ import {getPostAdminPage} from "@/blog/api/blogAdminPost.js";
 import {getAdminCategoriesMap} from "@/blog/api/blogAdminCategories.js";
 import {getDictMapByCode} from "@/blog/api/blogDict.js";
 import {getAdminTagsMap} from "@/blog/api/blogAdminTag.js";
+import {useRoute,useRouter} from "vue-router";
+
+const router = useRouter()
 
 const shortcuts = [
   {
@@ -127,6 +130,14 @@ function handleSelectionChange(value) {
 
 const is=ref(1)
 
+function doUpdate(id) {
+  router.push({
+    path: '/blog/admin/post/release',
+    query: {
+      id: id,
+    }
+  })
+}
 </script>
 
 <template>
@@ -214,7 +225,7 @@ const is=ref(1)
           <el-tag>123</el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="id" label="浏览量"/>
+      <el-table-column prop="viewCount" label="浏览量"/>
       <el-table-column label="类型">
         <template #default="scope">
           {{dictBlogPostType[scope.row.type]}}
@@ -259,8 +270,8 @@ const is=ref(1)
         </template>
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="200">
-        <template #default>
-          <el-button link type="primary" size="small" @click="">编辑</el-button>
+        <template #default="scope">
+          <el-button link type="primary" size="small" @click="doUpdate(scope.row.id)">编辑</el-button>
           <el-button link type="primary" size="small" @click="">详情</el-button>
           <!-- 密码原文链接是否可以评论点赞等设置 -->
           <el-button link type="primary" size="small" @click="">设置</el-button>

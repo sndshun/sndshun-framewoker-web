@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <h1 class="text-3xl">Welcome to my dashboard!</h1>
+  <el-card shadow="never">
+    <h1 class="text-3xl">Welcome to my dashboard!</h1>
+  </el-card>
 </template>
 
 <style scoped>

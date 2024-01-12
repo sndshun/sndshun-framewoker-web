@@ -2,12 +2,14 @@
 import {onActivated, ref} from 'vue';
 import Vditor from 'vditor';
 import 'vditor/dist/index.css';
-import {savePost} from "@/blog/api/blogAdminPost.js";
+import {savePost,getPostAdminOne} from "@/blog/api/blogAdminPost.js";
 import {getAdminCategoriesMap} from "@/blog/api/blogAdminCategories.js";
 import {ElMessage, ElNotification} from "element-plus";
 import {getDictMapByCode} from "@/blog/api/blogDict.js";
 import {getAdminTagsMap} from "@/blog/api/blogAdminTag.js";
+import {useRoute} from "vue-router";
 
+const route=useRoute()
 
 const post = ref({
   id: null,
@@ -36,12 +38,21 @@ const post = ref({
 })
 
 const vditor = ref(null)
-onActivated(() => {
+onActivated(async () => {
+  if (route.query.id) {
+    post.value = await getPostAdminOne(route.query.id);
+  } else {
+    post.value={}
+  }
   vditor.value = new Vditor('vditor', {
     minHeight: 500,
     height: "700",
     after() {
-      vditor.value.setValue('开始你的发挥');
+      if(post.value.content){
+        vditor.value.setValue(post.value.content);
+      }else {
+        vditor.value.setValue('开始你的发挥');
+      }
     },
     cache: {
       enable: false, //关闭浏览器缓存
@@ -66,9 +77,9 @@ onActivated(() => {
         vditor.value.insertValue(`![${JSON.parse(msg).data.originalFileName}](${JSON.parse(msg).data.ossFilePath})`)
       }
     },
-  })
-})
+  });
 
+})
 
 const activeNames = ref(['1'])
 const cateMap=ref(null)
@@ -81,7 +92,7 @@ async function postLoad() {
   tagMap.value=await getAdminTagsMap()
 }
 const handleAvatarSuccess = (response, uploadFile) => {
-  post.value.coverImageUrl = URL.createObjectURL(uploadFile.raw)
+  post.value.coverImageUrl = response.data.ossFilePath
 }
 const beforeAvatarUpload = (rawFile) => {
   if (!rawFile.type.includes('image')) {

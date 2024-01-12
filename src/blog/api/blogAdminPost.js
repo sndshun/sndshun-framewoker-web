@@ -15,3 +15,10 @@ export function getPostAdminPage(options={current : 1, size : 10,},data) {
         params: {...options,...data}
     })
 }
+
+export function getPostAdminOne(id) {
+    return request({
+        method: "get",
+        url: `/blog/admin/post/${id}`,
+    })
+}
