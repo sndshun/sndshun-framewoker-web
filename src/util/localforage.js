@@ -91,3 +91,23 @@ class StorageProxy {
  * 二次封装 [localforage](https://localforage.docschina.org/) 支持设置过期时间，提供完整的类型提示
  */
 export const localForage = () => new StorageProxy(forage);
+
+export function setItem(k, v, ttl) {
+    return localForage().setItem(k, v, ttl);
+}
+
+export function getItem(k) {
+    return localForage().getItem(k);
+}
+
+export function removeItem(k) {
+    return localForage().removeItem(k);
+}
+
+export function clear() {
+    return localForage().clear();
+}
+
+
+
+

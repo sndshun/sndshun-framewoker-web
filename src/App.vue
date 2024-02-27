@@ -20,9 +20,8 @@ const toggle = () => {
 <style>
 html,
 body,
-#app,
-#app > div {
-  min-height: 100vh;
+body>div {
+  height: 100%;
   background: #F2F3F5;
 }
 </style>

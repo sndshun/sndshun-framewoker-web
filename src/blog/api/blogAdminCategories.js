@@ -1,4 +1,4 @@
-import request from "@/request.js";
+import request from "@/util/request.js";
 
 /**
  * 获取所有分类树

@@ -1,4 +1,4 @@
-import request from "@/request.js";
+import request from "@/util/request.js";
 
 export function getBlogMenu() {
     return request("/blog/endpoint/menu/tree")

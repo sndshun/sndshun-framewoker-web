@@ -4,7 +4,7 @@ import {getPostAdminPage} from "@/blog/api/blogAdminPost.js";
 import {getAdminCategoriesMap} from "@/blog/api/blogAdminCategories.js";
 import {getDictMapByCode} from "@/blog/api/blogDict.js";
 import {getAdminTagsMap} from "@/blog/api/blogAdminTag.js";
-import {useRoute,useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 
 const router = useRouter()
 
@@ -55,14 +55,15 @@ const shortcuts = [
 ]
 
 
-const cateMap=ref(null)
-const dictBlogPostType=ref(null)
-const tagMap=ref(null)
+const cateMap = ref(null)
+const dictBlogPostType = ref(null)
+const tagMap = ref(null)
 postLoad()
+
 async function postLoad() {
-  cateMap.value=await getAdminCategoriesMap()
-  dictBlogPostType.value=await getDictMapByCode('blog_post_type')
-  tagMap.value=await getAdminTagsMap()
+  cateMap.value = await getAdminCategoriesMap()
+  dictBlogPostType.value = await getDictMapByCode('blog_post_type')
+  tagMap.value = await getAdminTagsMap()
   init()
 }
 
@@ -105,8 +106,9 @@ function InitPage() {
 
 
 const status = ref('1');
+
 function statusChange(val) {
-  status.value=val
+  status.value = val
   if (status.value === '1') {
     query.isPublished = null
     query.logicDelete = null
@@ -123,12 +125,13 @@ function statusChange(val) {
   init();
 }
 
-const selectTable=ref([])
+const selectTable = ref([])
+
 function handleSelectionChange(value) {
 
 }
 
-const is=ref(1)
+const is = ref(1)
 
 function doUpdate(id) {
   router.push({
@@ -150,7 +153,7 @@ function doUpdate(id) {
       <span class="status">状态</span>
       <span :class="{'active-status':status==='1','status':status!=='1'}" @click="statusChange('1')">全部</span>
       <span :class="{'active-status':status==='2','status':status!=='2'}" @click="statusChange('2')">公开</span>
-      <span :class="{'active-status':status==='3','status':status!=='3'}" @click="statusChange('3')">私密</span>
+      <span :class="{'active-status':status==='3','status':status!=='3'}" @click="statusChange('3')">草稿</span>
       <span :class="{'active-status':status==='4','status':status!=='4'}" @click="statusChange('4')">回收站</span>
     </div>
     <el-form :inline="true" :model="query" label-width="0">
@@ -214,10 +217,14 @@ function doUpdate(id) {
     >
       <el-table-column type="selection" width="42"/>
       <el-table-column prop="title" label="标题" width="200" fixed show-overflow-tooltip/>
-      <el-table-column prop="coverImageUrl" label="封面" show-overflow-tooltip/>
+      <el-table-column label="封面" width="120">
+        <template #default="scope">
+          <el-image :src="scope.row.coverImageUrl" style="width: 100px; height: 60px"/>
+        </template>
+      </el-table-column>
       <el-table-column label="分类" show-overflow-tooltip>
         <template #default="scope">
-          {{cateMap[scope.row.categoryId]}}
+          {{ cateMap[scope.row.categoryId] }}
         </template>
       </el-table-column>
       <el-table-column label="标签">
@@ -228,7 +235,7 @@ function doUpdate(id) {
       <el-table-column prop="viewCount" label="浏览量"/>
       <el-table-column label="类型">
         <template #default="scope">
-          {{dictBlogPostType[scope.row.type]}}
+          {{ dictBlogPostType[scope.row.type] }}
         </template>
       </el-table-column>
       <el-table-column prop="publishedTime" label="发布时间" width="170" show-overflow-tooltip/>
@@ -305,6 +312,7 @@ function doUpdate(id) {
   color: rgb(0 0 0);
   cursor: pointer;
 }
+
 .status {
   margin-right: 1.25rem;
   font-size: 0.875rem;

@@ -1,5 +1,7 @@
-import { defineStore } from 'pinia'
+import {defineStore} from 'pinia'
 
-export const blogStore = defineStore('blog', {
+export const blogStore = defineStore(
+    'blog',
+    () => {
 
-})
+    })

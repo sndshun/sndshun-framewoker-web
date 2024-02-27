@@ -10,6 +10,7 @@ export const blogRouter=[
         redirect: '/blog/home',
         children:[
             {
+                name: 'home',
                 path: baseUrl.concat('home'),
                 component: ()=>import("@/blog/page/Home.vue"),
                 meta: {
@@ -51,7 +52,13 @@ export const blogRouter=[
                 meta: {
                     title: '文章'
                 }
-            },
+            },{
+                path: baseUrl.concat('chat'),
+                component: ()=>import("@/blog/page/Chat.vue"),
+                meta: {
+                    title: '聊天室'
+                }
+            }
         ]
     },
 ]
