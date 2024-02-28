@@ -95,6 +95,7 @@ function join() {
 }
 
 function sendMessage() {
+  if(!data.value.content)return;
   webSocketStore.sendMessage("/app/chat.sendMessage", message())
   data.value.content = ""
 }
